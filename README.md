@@ -1,6 +1,20 @@
 # ICU_Dictionary
 Creation of Identifier Dictionary for ICU terms and prototype to apply it.
 
+
+# **Creation of Intensive Care Unit (ICU) Dictionary**
+
+## **Methodology Overview**
+This document outlines the strategy employed for collecting and structuring ICU-specific data points, as well as the **methodology used to develop the identifier dictionary**.
+
+---
+
+## **Specific Approach to ICU Data**
+
+### **1️⃣ Consulting an ICU Expert for Real-World Validation**
+- Recognizing that source documentation alone cannot always be trusted, I took the **additional step of consulting an experienced ICU surgeon** to identify the most **high-risk** and **relevant** patient data points in Brazil.  
+- This ensured that the dataset had the **highest level of completeness and correctness** before implementing detection logic. Here are the most relevant datapoints to be considered:
+
 # **DLP Classification**  
 
 | **Category**                     | **Data Points (Brazilian_ Portuguese)**                                       | **DLP Sensitivity Level** | **Potential Risks**                                  |
@@ -17,18 +31,6 @@ Creation of Identifier Dictionary for ICU terms and prototype to apply it.
 | **Dietary Information**           | Dieta                                              | 🟡 Low                    | Less critical but still part of patient records  |
 
 
-# **Creation of Intensive Care Unit (ICU) Dictionary**
-
-## **Methodology Overview**
-This document outlines the strategy employed for collecting and structuring ICU-specific data points, as well as the **methodology used to develop the identifier dictionary**.
-
----
-
-## **Specific Approach to ICU Data**
-
-### **1️⃣ Consulting an ICU Expert for Real-World Validation**
-- Recognizing that source documentation alone cannot always be trusted, I took the **additional step of consulting an experienced ICU surgeon** to identify the most **high-risk** and **relevant** patient data points in Brazil.  
-- This ensured that the dataset had the **highest level of completeness and correctness** before implementing detection logic.
 
 ### **2️⃣ Cross-Checking with Standardized Medical Taxonomies**
 To **enhance accuracy and interoperability**, I systematically reviewed the ICU dictionary against international standards. This approach ensures **scalability** in case the dictionary needs to be adapted for **multilingual or cross-border use**:

@@ -1,20 +1,21 @@
-
 # **Creation of Intensive Care Unit (ICU) Dictionary and LLM Prototype**
 
-Hi, 
-In `icu_data_dict_granular.json` you have a dictionary for Intensive Care Unit (ICU) in construction, already with a few identifiers that were built following the  methodology outlined in the `README.md` file.
+## **Overview**
+Hi,  
 
-´Identifier_Builder.ipynb´ shows my reasoning to build each identifier, strictly following the methodology.
+In `icu_data_dict_granular.json`, you'll find a structured dictionary for Intensive Care Unit (ICU) data, currently under construction. It already includes a few key identifiers built following the methodology outlined in `README.md`.  
 
-`generate_random_documents.ipynb` creates documents so I can apply the LLM classification on their contents.
-
-The LLM classification is part of the `DLP_Product_Prototype.ipynb` which identifies sensitive data in documents and adds a watermark on them as a psychological deterrent,
-and adds the sensitive label on the document's meta data.
-
-## **Methodology Overview**
-This document outlines the strategy employed for collecting and structuring ICU-specific data points, as well as the **general methodology used to develop the identifier dictionary**.
+- **`Identifier_Builder.ipynb`** → Documents my reasoning behind each identifier, following a rigorous methodology.  
+- **`generate_random_documents.ipynb`** → Generates synthetic documents to apply LLM classification for testing.  
+- **`DLP_Product_Prototype.ipynb`** → Implements an **LLM-based classification system** to identify sensitive data in documents, apply watermarking as a psychological deterrent, and label document metadata for enhanced security tracking.  
 
 ---
+
+## **Methodology Overview**
+This document outlines the **strategy for collecting and structuring ICU-specific data points** and the **general methodology used to develop the identifier dictionary**.
+
+---
+
 
 ## **Specific Approach to ICU Data**
 

@@ -1,0 +1,46 @@
+{
+    "Patient_Identifiers": {
+        "Fields": {
+            "Complete_Name": {
+                "Field_Identifier": [
+                    "\\b(?:[Nn]ome)\\b",
+                    "[nN]ome\\s?[cC]ompleto",
+                    "\\b[Nn]ome\\s?(?:d[oa])?\\s?[Pp]aciente\\b",
+                    "[Pp]aciente"
+                ],
+                "Content_Identifier": "\\b[A-ZÀ-Ÿ][a-zà-ÿ]+\\s?-?(?:da|de|do|dos|das|di|del|della|degli|dei|von|van|\\bvon der\\b|\\bvan der\\b|\\bvan den\\b|du|\\bde la\\b|al|bin|ibn|el)?\\s?[A-ZÀ-Ÿ][a-zà-ÿ]+\\s?-?(?:(?:da|de|do|dos|das|di|del|della|degli|dei|von|van|\\bvon der\\b|\\bvan der\\b|\\bvan den\\b|du|\\bde la\\b|al|bin|ibn|el)?\\s?-?[A-ZÀ-Ÿ][a-zà-ÿ]+\\s?)*\\b",
+                "DLP_Strategy": "Detects full patient names using regex-based entity recognition."
+            },
+            "Patient_Number": {
+                "Field_Identifier": [
+                    "\\b(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\s?(?:de)?\\s?atendimento\\b",
+                    "\\batendimento\\s?(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\b",
+                    "\\b(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\s?(?:do)?\\s?Prontuário\\b",
+                    "\\b(?:Prontuário n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\b"
+                ],
+                "Content_Identifier": "\\b\\[A-Z]{2}\\d{5,10}\\b",
+                "DLP_Strategy": "Detects numerical patient identifiers in hospital records."
+            }
+        }
+    },
+    "Medical_Conditions": {
+        "Fields": {
+            "Diagnosis": {
+                "Field_Identifier": [
+                    "\\b(?:Diagn[óo]stico|\\bCID-?10\\b|Doen[çc]a|Enfermidade|Patologia|Condi[çc][ãa]o|S[ií]ndrome|Achado Cl[ií]nico|Comorbidade|Progn[óo]stico|Classifica[çc][ãa]o|Quadro\\s?Clínico)\\b"
+                ],
+                "Content_Identifier": "(?:S[eé]p(?:tico|ticemia|sis|se)s?|neuro|cereb(?:ral|ro)|card|infec[cç][aã]o|Pneumonia|Hemorragia|Síndrome|Hipertens[ãa][oae]|Diabetes|AVC|aneurisma|Enfart[eo]|\\bInsufici[êe]ncia\\s?Renal\\b|\\bFal[êe]ncia\\s?Hep[áa]tica\\b|\\bLes[ãa]o\\s?Renal\\s?Aguda\\b|\\bFal[êe]ncia\\s?(?:de M[úu]ltiplos|múltipla de)\\s?[Óo]rg[ãa]os\\b|\\bEmbolia\\s?Pulmonar\\b|\\bInsufici[êe]ncia\\s?Respirat[óo]ria\\b|\\bFal[êe]ncia\\s?Card[íi]aca\\b|\\bParada\\s?Card[íi]aca\\b)",
+                "DLP_Strategy": "Identifies medical conditions, ICD-10 codes, and diagnostic terms in patient records."
+            }
+        }
+    },
+    "Prescriptions": {
+        "Fields": {
+            "Medical_Prescription": {
+                "Field_Identifier": "\\b(?:Prescriç[ãa]o|Receita M[ée]dica|Medicação|Drogas|Farmacologia|Medicamento|Uso Cont[íi]nuo|Administra[çc][ãa]o)\\b",
+                "Content_Identifier": "\\b(?:Paracetamol|Dipirona|Ibuprofeno|Cetoprofeno|Tramadol|Morfina|Fentanil|Sufentanil|Meperidina|Clonidina|Midazolam|Lorazepam|Diazepam|Propofol|Ketamina|Dexmedetomidina|Dobutamina|Dopamina|Adrenalina|Noradrenalina|Vasopressina|Milrinona|Fenilefrina|Vancomicina|Meropenem|Imipenem|Piperacilina|Tazobactam|Cefepima|Ceftriaxona|Ceftazidima|Levofloxacino|Ciprofloxacino|Amicacina|Gentamicina|Linezolida|Fluconazol|Anfotericina|Amiodarona|Labetalol|Metoprolol|Esmolol|Nicardipina|Hidralazina|Nitroprussiato|Diltiazem|Haloperidol|Quetiapina|Olanzapina|Risperidona|Pancurônio|Rocurônio|Cisatracúrio|Atracúrio|Atorvastatina|Omeprazol|Pantoprazol|Ranitidina|Heparina|Enoxaparina)\\b",
+                "DLP_Strategy": "Detects prescribed medications, controlled substances, and dosage information."
+            }
+        }
+    }
+}

@@ -1,11 +1,18 @@
-# ICU_Dictionary
-Creation of Identifier Dictionary for ICU terms and prototype to apply it.
 
+# **Creation of Intensive Care Unit (ICU) Dictionary and LLM Prototype**
 
-# **Creation of Intensive Care Unit (ICU) Dictionary**
+Hi, 
+In `icu_data_dict_granular.json` you have a dictionary for Intensive Care Unit (ICU) in construction, already with a few identifiers that were built following the  methodology outlined in the `README.md` file.
+
+´Identifier_Builder.ipynb´ shows my reasoning to build each identifier, strictly following the methodology.
+
+`generate_random_documents.ipynb` creates documents so I can apply the LLM classification on their contents.
+
+The LLM classification is part of the `DLP_Product_Prototype.ipynb` which identifies sensitive data in documents and adds a watermark on them as a psychological deterrent,
+and adds the sensitive label on the document's meta data.
 
 ## **Methodology Overview**
-This document outlines the strategy employed for collecting and structuring ICU-specific data points, as well as the **methodology used to develop the identifier dictionary**.
+This document outlines the strategy employed for collecting and structuring ICU-specific data points, as well as the **general methodology used to develop the identifier dictionary**.
 
 ---
 
@@ -61,7 +68,7 @@ To **apply** the ICU dictionary in a real-world setting, I developed a prototype
 If **sensitive data** is identified, the system **immediately applies two protective measures**:
 
 1. **Watermarking** → Embeds a **"Sensitive" watermark** in documents, acting as a **psychological deterrent** to prevent accidental leaks or mishandling.  
-2. **Metadata Tagging** → Adds a `"Sensitive"` flag to document metadata for **enhanced tracking** (e.g., if the file is **copied, altered, uploaded, downloaded, or shared**).  
+2. **Metadata Tagging** → Adds a "Sensitive" flag to document metadata for **enhanced tracking** (e.g., if the file is **copied, altered, uploaded, downloaded, or shared**).  
 
 ---
 
@@ -81,8 +88,8 @@ Once the linguistic patterns are understood, the next step is converting them in
 
 #### **Handling Variations & Anomalies**
 🔹 **Typo & Variation Handling** → Implements **Regex-based typo correction** and **fuzzy matching algorithms** (Levenshtein distance, cosine similarity, etc.).  
-🔹 **Encoding Challenges** → Accounts for **special character removal** (e.g., `"ação"` → `"acao"`) to ensure **ASCII compatibility**.  
-🔹 **Whitespace Sensitivity** → Ensures detection is **robust against spacing inconsistencies** (e.g., `"NomePaciente"` vs. `"Nome Paciente"`).  
+🔹 **Encoding Challenges** → Accounts for **special character removal** (e.g., "ação" → "acao") to ensure **ASCII compatibility**.  
+🔹 **Whitespace Sensitivity** → Ensures detection is **robust against spacing inconsistencies** (e.g., "NomePaciente" vs. "Nome Paciente").  
 
 #### **Balancing Generalization & Precision**
 - The key principle: **"As general as possible, as specific as necessary."**  
@@ -94,7 +101,7 @@ Once the linguistic patterns are understood, the next step is converting them in
 
 ---
 
-# **Stress-Testing the Identifier**
+# **4️⃣ Stress-Testing the Identifier**
 The goal is to **expose the identifier’s limitations and strengths** through a **multi-faceted stress-testing approach**.
 
 ### **1️⃣ Positive Stress-Test (PST)**
@@ -118,6 +125,37 @@ Actively **attempt to break the identifier**. This can involve:
 
 The best improvements **often go beyond Regex alone**—leading to **enhanced hybrid detection strategies**.
 
+### **4️⃣ Time Stress-Test (TST)**
+🔹 **Goal:** Ensure the identifier remains valid over time.  
+🔹 **Method:**
+- Tag each identifier with a **time sensitivity level** (e.g., *"Stable", "Likely to Change", "Requires Review"*).
+- Implement a **scheduled review process** to reassess identifiers flagged as **unstable or evolving**.
+- Use **automated monitoring** to detect changes in medical taxonomies (ICD, LOINC, etc.).  
+
+### **5️⃣ Regex Usage & Implementation**
+Regex is a core component of structured pattern detection, but its application requires **deliberate selection of functions and syntax** depending on the context.
+
+- **Understand the available methods**:
+  - `findall()` → Extracts **all** matches in a given text.
+  - `search()` → Finds the **first** match, useful for presence checks.
+  - `match()` → Checks **only** at the start of the string.
+  - `fullmatch()` → Ensures the **entire string** matches the pattern.
+  - `compile()` → Pre-compiles the regex for **optimized reuse**.
+
+- **Cross-check regex behavior across different languages**:
+  - Python, Go, and JavaScript each have slight **variations in regex handling**.
+  - Some engines allow **lookbehind assertions**, while others don’t.
+  - Always test for **edge cases** where regex might fail due to compilation quirks.
+
+### **6️⃣ Preventive Alignment with Client's DLP Readiness**
+Depending on how well **the organization enforces DLP policies**, there may be **pre-existing structures** that can **enhance detection accuracy**.
+
+✅ **Fixed Identifier Standards** → If certain **IDs** (e.g., patient IDs, case numbers) follow a strict **numeric or alphanumeric structure**, regex rules can be optimized to enforce **expected formats only**.  
+✅ **Standard Document Titles & Tags** → If policies **require sensitive documents** to be **explicitly labeled**, DLP detection can **leverage these fields** instead of relying solely on content analysis.  
+✅ **Proactive Policy Integration** → Work with the **client’s compliance team** to **align detection with existing data governance policies** (e.g., ensuring system-generated reports include structured metadata).  
+
+By aligning **preventive strategies** with **automated detection**, we can **reduce false positives** while **reinforcing security** at the source.
+
 ---
 
 # **Next Steps & Future Considerations**
@@ -130,4 +168,4 @@ The best improvements **often go beyond Regex alone**—leading to **enhanced hy
 ## **Final Thoughts**
 This methodology **ensures a rigorous, linguistically-grounded approach** to ICU data classification. By **combining domain expertise, structured taxonomies, and hybrid detection techniques**, the project lays a **strong foundation for robust DLP solutions** in healthcare.
 
-🚀 **Excited to refine this further based on feedback!**
+**Excited to refine this further based on feedback!**

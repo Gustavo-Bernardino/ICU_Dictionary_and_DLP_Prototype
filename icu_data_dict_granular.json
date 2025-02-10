@@ -16,7 +16,7 @@
                     "\\b(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\s?(?:de)?\\s?atendimento\\b",
                     "\\batendimento\\s?(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\b",
                     "\\b(?:n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\s?(?:do)?\\s?Prontuário\\b",
-                    "\\b(?:Prontuário n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\b"
+                    "\\b(?:Prontuário\\s?n[úu]mero|N\\.?|#|Nº|I[Dd]|C[óo]digo|identifica(?:ção|cao))\\b"
                 ],
                 "Content_Identifier": "\\b\\[A-Z]{2}\\d{5,10}\\b",
                 "DLP_Strategy": "Detects numerical patient identifiers in hospital records."
